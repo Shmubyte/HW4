@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home View</title>
+    <link rel="stylesheet" href="/css/styles1.css">
+</head>
+<body>
+    
+    <div id="navDiv"> 
+        <h1 id="title">Technological Surveillance</h1><br>  
+        <nav>
+            <a href="/">Home</a>
+            <a href="/types">Types of Surveillance</a>
+            <a href="/proponents">Proponents of Surveillance</a>
+            <a href="/resources">Resources</a>
+            <a href="/entities"> Entities and Info</a>
+        </nav>
+    </div>
+    <!---->
+    <div class="container">
+        <!-- Left Sidebar -->
+        <div class="sidebar">
+            <h2>Surveillance Companies</h2>
+            <ul class="company-list">
+                <% entities.forEach((entity, index) => { %>
+                    <li class="company-item" data-index="<%= index %>">
+                        <%= entity.name %>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+
+        <!-- Right Details Panel -->
+        <div class="details">
+            <div class="details-empty" id="emptyState">
+                Select a company to view details
+            </div>
+
+            <div class="details-content hidden" id="detailsContent">
+                <h1 id="companyName"></h1>
+
+                <div class="info-section">
+                    <h3>Headquarters</h3>
+                    <p id="headquarters"></p>
+                </div>
+
+                <div class="info-section">
+                    <h3>Types of Surveillance</h3>
+                    <div class="types-list" id="typesList"></div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Description</h3>
+                    <p id="description"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const entities = <%- JSON.stringify(entities) %>;
+    </script>
+    <script src="/js/entitiesScript.js"></script>
+</body>
+</html>
